@@ -35,7 +35,7 @@ npm install
 To run
 
 ```bash
-nodemon .
+npx nodemon
 ```
 
 ## Contributing
