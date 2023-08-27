@@ -37,6 +37,7 @@ To run
 ```bash
 npx nodemon
 ```
+The API will be hosted in port 3000 if no other port is specified.
 
 ## Contributing
 
