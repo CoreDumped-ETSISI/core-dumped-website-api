@@ -1,8 +1,6 @@
-# Project Name
+# Core Dumped Website API
 
-[One-sentence project description goes here.]
-
-![Project Logo](project_logo.png) (if applicable)
+API to interface with a Mongo database that stores all the events, projects and people needed for the Core Dumped Website.
 
 ## Table of Contents
 
@@ -17,23 +15,36 @@
 
 ## About
 
-[Provide a brief description of the project, what it does, and its main features.]
+This API connects to a Mongo database and provides access to its data to the [Core Dumped Website](https://github.com/CoreDumped-ETSISI/core-dumped-website).
+It needs to handle GET requests on the Projects, Event and People, accesible to anyone.
+It needs to allow POST and PUT requests for Projects and Event, only for logged administrators using [JSON Web Tokens](https://jwt.io/).
+It needs to allow PUT requests for People, only for logged administrators using [JSON Web Tokens](https://jwt.io/).
 
 ## Installation
 
-[Instructions on how to install and set up the project. Include any dependencies that need to be installed and how to install them.]
+Install nodejs 20.5.1 [here](https://nodejs.org/en)
+
+Clone this repository and run
+
+```bash
+npm install
+```
 
 ## Usage
 
-[Instructions on how to use the project, along with code examples or relevant screenshots if applicable.]
+To run
+
+```bash
+node server.js
+```
 
 ## Contributing
 
-We welcome contributions from the community! If you want to contribute to [Project Name], please follow the guidelines in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+We welcome contributions from the community! If you want to contribute to Core Dumped Website API, please follow the guidelines in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
 ## License
 
-[Project Name] is released under the [License Name](LICENSE). [Include a brief summary of the license terms and a link to the full license file.]
+Core Dumped Website API is released under the [Apache 2.0](LICENSE). [Include a brief summary of the license terms and a link to the full license file.]
 
 ## Authors and Contributors
 
