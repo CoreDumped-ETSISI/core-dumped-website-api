@@ -35,7 +35,7 @@ npm install
 To run
 
 ```bash
-node server.js
+nodemon .
 ```
 
 ## Contributing
