@@ -1,4 +1,5 @@
-const EventModel = require("../models/events");
+const mongoose = require("mongoose");
+const Event = require("../models/events");
 
 /**
  * Gets all events in an array
@@ -8,7 +9,7 @@ const EventModel = require("../models/events");
  *
  */
 exports.events_get_all = (req, res, next) => {
-  EventModel.find()
+  Event.find({})
     .sort({ date: "descending" })
     .exec()
     .then((docs) => {
@@ -29,26 +30,21 @@ exports.events_get_all = (req, res, next) => {
  * @access Public
  */
 exports.events_create_event = (req, res, next) => {
-  const event = new EventModel({
+  console.log(req.body);
+  const event = new Event({
     _id: new mongoose.Types.ObjectId(),
     title: req.body.title,
     description: req.body.description,
-    eventImage: req.body.image,
+    image: req.body.image,
     date: req.body.date,
     category: req.body.category,
     status: req.body.status,
   });
-  product
+  event
     .save()
     .then((result) => {
-      res.status(201).json({
-        message: "Created event successfully",
-        createdProduct: {
-          name: result.title,
-          description: result.decription,
-          _id: result._id,
-        },
-      });
+      console.log(result);
+      res.status(201).json(result);
     })
     .catch((err) => {
       console.log(err);

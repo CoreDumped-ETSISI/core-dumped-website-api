@@ -1,16 +1,15 @@
-import mongoose from "mongoose";
-const { Schema } = mongoose;
+const mongoose = require("mongoose");
 
-const eventSchema = new Schema(
+const eventSchema = new mongoose.Schema(
   {
-    _id: Schema.Types.ObjectId,
+    _id: mongoose.Schema.Types.ObjectId,
     title: {
       type: String,
       required: true,
       maxLength: 20,
     },
-    body: { type: String, required: true },
-    eventImage: { type: String, required: true },
+    description: { type: String, required: true },
+    image: { type: String, required: true },
     date: { type: Date, default: Date.now },
     category: { type: String, required: true },
     status: {

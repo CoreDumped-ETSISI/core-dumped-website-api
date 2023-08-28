@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 });
 
 // Routes which should handle requests
-app.use("/events", EventControllers.events_get_all);
+app.use("/events", EventRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("Not found");
