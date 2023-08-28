@@ -1,13 +1,14 @@
-const Event = require("../models/events");
+const EventModel = require("../models/events");
 
 /**
  * Gets all events in an array
+ * @method GET
  * @route /projects
  * @access Public
  *
  */
-const events_get_all = (req, res, next) => {
-  Event.find()
+exports.events_get_all = (req, res, next) => {
+  EventModel.find()
     .sort({ date: "descending" })
     .exec()
     .then((docs) => {
@@ -23,11 +24,12 @@ const events_get_all = (req, res, next) => {
 
 /**
  * Gets all information for the event with the corresponding ID
- * @route /projects/:projectId
+ * @method POST
+ * @route /projects
  * @access Public
  */
-const events_create_event = (req, res, next) => {
-  const event = new Event({
+exports.events_create_event = (req, res, next) => {
+  const event = new EventModel({
     _id: new mongoose.Types.ObjectId(),
     title: req.body.title,
     description: req.body.description,

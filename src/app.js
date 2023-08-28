@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 
+const EventControllers = require("./controllers/events");
+
 mongoose.connect(process.env.MONGO_URI, { useMongoClient: true });
 
 mongoose.Promise = global.Promise;
@@ -24,6 +26,7 @@ app.use((req, res, next) => {
 });
 
 // Routes which should handle requests
+app.use("/events", EventControllers.events_get_all);
 
 app.use((req, res, next) => {
   const error = new Error("Not found");
