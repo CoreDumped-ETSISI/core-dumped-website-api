@@ -4,11 +4,26 @@ const app = express();
 
 mongoose.connect(process.env.MONGO_URI, { useMongoClient: true });
 
+mongoose.Promise = global.Promise;
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+//Headers
 app.use((req, res, next) => {
-  res.status(200).json({
-    message: "OK",
-  });
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "PUT, POST, DELETE, GET");
+    return res.status(200).json({});
+  }
+  next();
 });
+
+// Routes which should handle requests
 
 app.use((req, res, next) => {
   const error = new Error("Not found");
