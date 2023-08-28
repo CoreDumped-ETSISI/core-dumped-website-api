@@ -1,13 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
+require("dotenv").config();
+const bodyParser = require("body-parser");
 const app = express();
 
-mongoose.connect(process.env.MONGO_URI, { useMongoClient: true });
+mongoose.connect(process.env.MONGO_URI);
 
 mongoose.Promise = global.Promise;
 
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 //Headers
 app.use((req, res, next) => {
