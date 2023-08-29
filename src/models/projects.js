@@ -17,6 +17,7 @@ const projectSchema = new mongoose.Schema(
       required: true,
       enum: ["Completado", "En progreso", "Cancelado", "Próximamente"],
     },
+    //Url of the project inside the API, automatically generated at POST
     url: { type: String, required: true },
   },
   { collection: "projects" }
