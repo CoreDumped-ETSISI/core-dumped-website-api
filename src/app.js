@@ -5,13 +5,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const bodyParser = require("body-parser");
 
-<<<<<<< HEAD
-const EventControllers = require("./controllers/events");
-
-mongoose.connect(process.env.MONGO_URI, { useMongoClient: true });
-=======
 mongoose.connect(process.env.MONGO_URI);
->>>>>>> main
 
 mongoose.Promise = global.Promise;
 
