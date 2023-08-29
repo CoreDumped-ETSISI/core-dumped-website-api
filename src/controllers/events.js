@@ -26,7 +26,7 @@ exports.events_get_all = (req, res, next) => {
 /**
  * Gets event with matching ID
  * @method GET
- * @route /eventos/:eventId
+ * @route /eventos/evento-:eventId
  * @access Public
  *
  */
@@ -42,6 +42,26 @@ exports.events_get_event = (req, res, next) => {
           .status(404)
           .json({ message: "No valid entry found for provided ID" });
       }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: err });
+    });
+};
+/**
+ * Gets distinct categories from events
+ * @method GET
+ * @route /eventos/categorias
+ * @access Public
+ *
+ */
+exports.events_get_categories = (req, res, next) => {
+  const id = req.params.eventId;
+  Event.find({})
+    .distinct("category")
+    .exec()
+    .then((docs) => {
+      res.status(200).json(docs);
     })
     .catch((err) => {
       console.log(err);
@@ -86,7 +106,7 @@ exports.events_create_event = (req, res, next) => {
 /**
  * Deletes event with matching ID
  * @method DELETE
- * @route /eventos/:eventId
+ * @route /eventos/evento-:eventId
  * @access Authorization required
  *
  */
@@ -115,7 +135,7 @@ exports.events_delete_event = (req, res, next) => {
 /**
  * Updates event with matching ID
  * @method PATCH
- * @route /eventos/:eventId
+ * @route /eventos/evento-:eventId
  * @access Authorization required
  *
  */
