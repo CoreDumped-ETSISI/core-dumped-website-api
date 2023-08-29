@@ -4,6 +4,8 @@ require("dotenv").config();
 const app = express();
 const bodyParser = require("body-parser");
 
+const EventRoutes = require("./routes/events");
+
 mongoose.connect(process.env.MONGO_URI);
 
 mongoose.Promise = global.Promise;
@@ -26,6 +28,7 @@ app.use((req, res, next) => {
 });
 
 // Routes which should handle requests
+app.use("/eventos", EventRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("Not found");
