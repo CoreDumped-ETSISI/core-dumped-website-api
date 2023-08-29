@@ -25,7 +25,7 @@ exports.events_get_all = (req, res, next) => {
 
 exports.events_get_event = (req, res, next) => {
   const id = req.params.eventId;
-  Product.findById(id)
+  Event.findById(id)
     .exec()
     .then((doc) => {
       if (doc) {
@@ -49,15 +49,16 @@ exports.events_get_event = (req, res, next) => {
  * @access Public
  */
 exports.events_create_event = (req, res, next) => {
+  const id = new mongoose.Types.ObjectId();
   const event = new Event({
-    _id: new mongoose.Types.ObjectId(),
+    _id: id,
     title: req.body.title,
     description: req.body.description,
     image: req.body.image,
     date: req.body.date,
     category: req.body.category,
     status: req.body.status,
-    url: req.get("host") + "/" + _id,
+    url: req.get("host") + "/eventos/" + id,
   });
   event
     .save()
