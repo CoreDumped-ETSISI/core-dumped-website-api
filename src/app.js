@@ -1,9 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
-const bodyParser = require("body-parser");
 const app = express();
 const bodyParser = require("body-parser");
+
+const EventRoutes = require("./routes/events");
 
 mongoose.connect(process.env.MONGO_URI);
 
