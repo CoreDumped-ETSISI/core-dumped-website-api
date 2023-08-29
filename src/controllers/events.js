@@ -57,6 +57,7 @@ exports.events_create_event = (req, res, next) => {
     date: req.body.date,
     category: req.body.category,
     status: req.body.status,
+    url: req.get("host") + "/" + _id,
   });
   event
     .save()

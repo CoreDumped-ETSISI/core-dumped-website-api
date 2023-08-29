@@ -17,6 +17,7 @@ const eventSchema = new mongoose.Schema(
       required: true,
       enum: ["Completado", "En progreso", "Cancelado", "Próximamente"],
     },
+    url: { type: String, required: true },
   },
   { collection: "events" }
 );
