@@ -85,7 +85,7 @@ exports.events_create_event = (req, res, next) => {
     date: req.body.date,
     category: req.body.category,
     status: req.body.status,
-    url: req.get("host") + "/eventos/" + id,
+    url: req.get("host") + "/eventos/evento-" + id,
   });
   event
     .save()
@@ -141,7 +141,7 @@ exports.events_delete_event = (req, res, next) => {
  */
 exports.events_update_event = (req, res, next) => {
   const id = req.params.eventId;
-  Event.findByIdAndUpdate(id, req.body)
+  Event.findByIdAndUpdate(id, req.body, { new: true })
     .exec()
     .then((doc) => {
       if (doc) {
