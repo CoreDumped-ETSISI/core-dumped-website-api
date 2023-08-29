@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 
 const EventRoutes = require("./routes/events");
 const ProjectRoutes = require("./routes/projects");
+const PeopleRoutes = require("./routes/people");
 
 mongoose.connect(process.env.MONGO_URI);
 
@@ -31,6 +32,7 @@ app.use((req, res, next) => {
 // Routes which should handle requests
 app.use("/eventos", EventRoutes);
 app.use("/proyectos", ProjectRoutes);
+app.use("/personas", PeopleRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("Not found");
