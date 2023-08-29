@@ -1,5 +1,8 @@
 const jwt = require("jsonwebtoken");
 
+/**
+ * Middleware that checks the validity of a JWT.
+ */
 module.exports = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];

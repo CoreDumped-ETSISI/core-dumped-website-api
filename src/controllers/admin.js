@@ -3,6 +3,12 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const Admin = require("../models/admin");
 
+/**
+ * Returns a valid for 2h JWT if the posted password is correct
+ * @method POST
+ * @route /login
+ * @access Public
+ */
 exports.admin_login = (req, res, next) => {
   let ip = req.ip;
   Admin.findOne({})

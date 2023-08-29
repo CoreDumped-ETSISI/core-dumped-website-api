@@ -13,6 +13,7 @@ mongoose.connect(process.env.MONGO_URI);
 
 mongoose.Promise = global.Promise;
 
+//middleware for parsing json and x-www-form-urlencoded bodies
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -36,12 +37,14 @@ app.use("/proyectos", ProjectRoutes);
 app.use("/personas", PeopleRoutes);
 app.use("/login", AdminRoutes);
 
+//If no endpoint consumes the request, throw a 404 error
 app.use((req, res, next) => {
   const error = new Error("Not found");
   error.status = 404;
   next(error);
 });
 
+//If an error ocurrs, send it to user
 app.use((error, req, res, next) => {
   res.status(error.status || 500);
   res.json({
