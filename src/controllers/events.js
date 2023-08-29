@@ -141,7 +141,7 @@ exports.events_delete_event = (req, res, next) => {
  */
 exports.events_update_event = (req, res, next) => {
   const id = req.params.eventId;
-  Event.findByIdAndUpdate(id, req.body, { new: true })
+  Event.findByIdAndUpdate(id, req.body, { new: true, runValidators: true })
     .exec()
     .then((doc) => {
       if (doc) {

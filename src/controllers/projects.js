@@ -141,7 +141,7 @@ exports.projects_delete_project = (req, res, next) => {
  */
 exports.projects_update_project = (req, res, next) => {
   const id = req.params.projectId;
-  Project.findByIdAndUpdate(id, req.body, { new: true })
+  Project.findByIdAndUpdate(id, req.body, { new: true, runValidators: true })
     .exec()
     .then((doc) => {
       if (doc) {
