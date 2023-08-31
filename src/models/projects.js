@@ -8,10 +8,10 @@ const projectSchema = new mongoose.Schema(
       required: true,
       maxLength: 20,
     },
-    description: { type: String, required: true },
+    description: { type: String, required: true, minLength: 100 },
     image: { type: String, required: true },
     date: { type: Date, default: Date.now },
-    category: { type: String, required: true },
+    category: { type: String, required: true, maxLength: 14 },
     status: {
       type: String,
       required: true,
