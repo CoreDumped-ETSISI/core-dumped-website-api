@@ -1,8 +1,13 @@
 const mongoose = require("mongoose");
 
-const eventSchema = new mongoose.Schema(
+const cardSchema = new mongoose.Schema(
   {
     _id: mongoose.Schema.Types.ObjectId,
+    type: {
+      type: String,
+      required: true,
+      enum: ["Proyecto", "Evento"],
+    },
     title: {
       type: String,
       required: true,
@@ -17,10 +22,10 @@ const eventSchema = new mongoose.Schema(
       required: true,
       enum: ["Completado", "En progreso", "Cancelado", "Próximamente"],
     },
-    //Url of the event inside the API, automatically generated at POST
+    //Url of the project inside the API, automatically generated at POST
     url: { type: String, required: true },
   },
-  { collection: "events" }
+  { collection: "cards" }
 );
 
-module.exports = mongoose.model("Event", eventSchema);
+module.exports = mongoose.model("Card", cardSchema);
