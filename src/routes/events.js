@@ -5,19 +5,6 @@ const checkAuth = require("../middleware/check-auth");
 
 //Publicly accessible
 router.get("/", EventControllers.events_get_all);
-router.get("/evento-:eventId", EventControllers.events_get_event);
 router.get("/categorias", EventControllers.events_get_categories);
 
-//Only accesible with authorization
-router.post("/", checkAuth, EventControllers.events_create_event);
-router.delete(
-  "/evento-:eventId",
-  checkAuth,
-  EventControllers.events_delete_event
-);
-router.patch(
-  "/evento-:eventId",
-  checkAuth,
-  EventControllers.events_update_event
-);
 module.exports = router;

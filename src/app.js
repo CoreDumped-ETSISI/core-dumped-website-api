@@ -8,6 +8,7 @@ const EventRoutes = require("./routes/events");
 const ProjectRoutes = require("./routes/projects");
 const PeopleRoutes = require("./routes/people");
 const AdminRoutes = require("./routes/admin");
+const CardRoutes = require("./routes/cards");
 
 mongoose.connect(process.env.MONGO_URI);
 
@@ -32,6 +33,7 @@ app.use((req, res, next) => {
 });
 
 // Routes which should handle requests
+app.use("/cartas", CardRoutes);
 app.use("/eventos", EventRoutes);
 app.use("/proyectos", ProjectRoutes);
 app.use("/personas", PeopleRoutes);
