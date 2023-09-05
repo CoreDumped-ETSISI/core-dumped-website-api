@@ -5,7 +5,7 @@ const checkAuth = require("../middleware/check-auth");
 
 //Publicly accessible
 router.get("/", PersonControllers.people_get_all);
-
+router.patch("/:personId", PersonControllers.people_get_person);
 //Only accesible with authorization
 router.patch("/:personId", checkAuth, PersonControllers.people_update_person);
 
