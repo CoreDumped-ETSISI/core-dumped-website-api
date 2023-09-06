@@ -1,6 +1,6 @@
-# Contributing to `<Project Name>`
+# Contributing to Core Dumped Website API
 
-We welcome contributions to `<Project Name>`! If you're looking to contribute, there are a few things you should know.
+We welcome contributions to Core Dumped Website API! If you're looking to contribute, there are a few things you should know.
 
 ## Pull Requests
 
