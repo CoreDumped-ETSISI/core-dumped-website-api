@@ -2,7 +2,7 @@
 
 Thank you to the following individuals who have contributed to this project:
 
-- [Adrián Puyet](https://github.com/Rowiz49) - Contribution type or description.
+- [Adrián Puyet](https://github.com/Rowiz49) - Lead Fullstack Developer
 
 ## License
 
