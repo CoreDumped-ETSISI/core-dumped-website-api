@@ -4,6 +4,7 @@ require("dotenv").config();
 const app = express();
 const bodyParser = require("body-parser");
 var cors = require("cors");
+var RateLimit = require("express-rate-limit");
 
 const EventRoutes = require("./routes/events");
 const ProjectRoutes = require("./routes/projects");
@@ -14,6 +15,15 @@ const CardRoutes = require("./routes/cards");
 mongoose.connect(process.env.MONGO_URI);
 
 mongoose.Promise = global.Promise;
+
+// set up rate limiter: maximum of five requests per minute
+var limiter = RateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // max 100 requests per windowMs
+});
+
+// apply rate limiter to all requests
+app.use(limiter);
 
 //middleware for parsing json and x-www-form-urlencoded bodies
 app.use(bodyParser.json());
