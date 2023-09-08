@@ -32,7 +32,7 @@ npm install
 
 ## Usage
 
-To run
+To run on dev mode locally
 
 ```bash
 npx nodemon
