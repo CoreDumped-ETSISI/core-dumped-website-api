@@ -39,6 +39,16 @@ npx nodemon
 ```
 The API will be hosted in port 3000 if no other port is specified.
 
+### How to Dockerize
+
+First, create a new `.env` inside `/app`, following the example in `.env.example`.
+
+Then run, replacing `imageName` and `port`
+```bash
+docker build -t <imageName> .
+docker run -p <port>:3000 <imageName>
+```
+
 ## Contributing
 
 We welcome contributions from the community! If you want to contribute to Core Dumped Website API, please follow the guidelines in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
