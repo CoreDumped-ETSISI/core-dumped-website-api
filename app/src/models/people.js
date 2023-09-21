@@ -21,7 +21,7 @@ const personSchema = new mongoose.Schema(
         "Secretaria",
       ],
     },
-    image: { type: String, required: true },
+    image: type: String,
     email: String,
     discord: String,
     github: String,
