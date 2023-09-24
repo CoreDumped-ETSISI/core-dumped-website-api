@@ -22,6 +22,8 @@ const cardSchema = new mongoose.Schema(
       required: true,
       enum: ["Completado", "En progreso", "Cancelado", "Próximamente"],
     },
+    clickable_link: String,
+    clickable_link_text: String,
     //Url of the project inside the API, automatically generated at POST
     url: { type: String, required: true },
   },

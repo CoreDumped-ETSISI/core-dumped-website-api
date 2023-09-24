@@ -66,6 +66,8 @@ exports.cards_create_card = (req, res, next) => {
     date: req.body.date,
     category: req.body.category,
     status: req.body.status,
+    clickable_link: req.body.clickable_link,
+    clickable_link_text: req.body.clickable_link_text,
     url: req.get("host") + "/cartas/" + id,
   });
   card
