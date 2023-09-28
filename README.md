@@ -72,7 +72,7 @@ We welcome contributions from the community! If you want to contribute to Core D
 
 ## License
 
-Core Dumped Website API is released under the [Apache 2.0](LICENSE). [Include a brief summary of the license terms and a link to the full license file.]
+Core Dumped Website API is released under the [Apache 2.0](LICENSE).
 
 ## Authors and Contributors
 
