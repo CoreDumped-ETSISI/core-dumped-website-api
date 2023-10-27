@@ -7,6 +7,6 @@ const checkAuth = require("../middleware/check-auth");
 router.get("/", PersonControllers.people_get_all);
 router.get("/:id", PersonControllers.people_get_person);
 //Only accesible with authorization
-router.patch("/:personId", checkAuth, PersonControllers.people_update_person);
+router.put("/:personId", checkAuth, PersonControllers.people_update_person);
 
 module.exports = router;

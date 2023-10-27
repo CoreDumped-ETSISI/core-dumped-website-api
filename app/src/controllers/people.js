@@ -50,14 +50,14 @@ exports.people_get_person = (req, res, next) => {
 
 /**
  * Updates person with matching ID
- * @method PATCH
+ * @method PUT
  * @route /personas/:personId
  * @access Authorization required
  *
  */
 exports.people_update_person = (req, res, next) => {
   const id = req.params.personId;
-  Person.findByIdAndUpdate(id, req.body, { new: true, runValidators: true })
+  Person.replaceOne({ _id: id }, req.body)
     .exec()
     .then((doc) => {
       if (doc) {
