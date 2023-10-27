@@ -6,6 +6,7 @@ API to interface with a Mongo database that stores all the events, projects and 
 
 - [About](#about)
 - [Installation](#installation)
+- [Routes](#routes)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
@@ -17,8 +18,8 @@ API to interface with a Mongo database that stores all the events, projects and 
 
 This API connects to a Mongo database and provides access to its data to the [Core Dumped Website](https://github.com/CoreDumped-ETSISI/core-dumped-website).
 It needs to handle GET requests on the Projects, Event and People, accesible to anyone.
-It needs to allow POST and PUT requests for Projects and Event, only for logged administrators using [JSON Web Tokens](https://jwt.io/).
-It needs to allow PUT requests for People, only for logged administrators using [JSON Web Tokens](https://jwt.io/).
+It needs to allow POST and PATCH requests for Projects and Event, only for logged administrators using [JSON Web Tokens](https://jwt.io/).
+It needs to allow PATCH requests for People, only for logged administrators using [JSON Web Tokens](https://jwt.io/).
 
 ## Installation
 
@@ -29,6 +30,22 @@ Clone this repository and run
 ```bash
 npm install
 ```
+## Routes
+
+The routes of this API are:
+- `\cartas` GET returns an array of all projects and events sorted by date
+- `\cartas` POST creates a new project or event
+- `\cartas\[:id]` GET returns a single project or event with the corresponding ID
+- `\cartas\[:id]` DELETE deletes a single project or event with the corresponding ID
+- `\cartas\[:id]` PATCH updates a single project or event with the corresponding ID
+- `\eventos\` GET returns an array of all events sorted by date
+- `\eventos\categorias` GET returns an array of all event categories
+- `\proyectos\` GET returns an array of all projects sorted by date
+- `\proyectos\categorias` GET returns an array of all project categories
+- `\personas` GET returns an array of all stored people
+- `\personas\:id` GET returns a single person with the corresponding ID
+- `\personas\:id` PATCH updates a single person with the corresponding ID
+- `\admin` POST returns a valid for 2h JWT if the password is correct. Apply the password to the header `Authorization: Bearer <JWT>` 
 
 ## Usage
 
@@ -55,7 +72,7 @@ We welcome contributions from the community! If you want to contribute to Core D
 
 ## License
 
-Core Dumped Website API is released under the [Apache 2.0](LICENSE). [Include a brief summary of the license terms and a link to the full license file.]
+Core Dumped Website API is released under the [Apache 2.0](LICENSE).
 
 ## Authors and Contributors
 
