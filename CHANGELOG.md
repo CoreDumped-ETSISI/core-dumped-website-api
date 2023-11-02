@@ -2,35 +2,10 @@
 
 All notable changes to the [Project Name] project will be documented in this file.
 
-## [Unreleased]
-
-### Added
-
-- List new features or functionalities that have been added but not yet released.
+## 1.0.1
 
 ### Changed
-
-- List changes to existing features or functionalities.
-
-### Deprecated
-
-- List functionalities that will be removed in future releases.
-
-### Removed
-
-- List functionalities that have been removed in this release.
-
-### Fixed
-
-- List bug fixes and issues that have been resolved.
-
-### Security
-
-- List security-related changes or vulnerability fixes.
-
-## [Version] - YYYY-MM-DD
-
-... Repeat the above sections for each new version release.
+- Changed PATCH requests to PUT requests.
 
 ## How to Use This Changelog
 
