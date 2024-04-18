@@ -5,7 +5,7 @@
 //     returned bool *
 
 
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const loansSchema = new mongoose.Schema(
     {

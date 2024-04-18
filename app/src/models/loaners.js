@@ -4,7 +4,7 @@
 //     email email *
 
 
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const loanersSchema = new mongoose.Schema(
     {
@@ -16,6 +16,7 @@ const loanersSchema = new mongoose.Schema(
         matricula: {
             type: String,
             required: true,
+            unique: true
         },
         email: {
             type: String,
