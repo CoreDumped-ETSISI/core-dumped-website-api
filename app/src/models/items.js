@@ -12,7 +12,7 @@ const itemsSchema = new mongoose.Schema(
         _id: mongoose.Schema.Types.ObjectId,
         name: {
             type: String,
-            required: True
+            required: true
         },
         image: {
             type: String,

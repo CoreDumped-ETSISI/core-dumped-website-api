@@ -11,6 +11,7 @@ const ProjectRoutes = require("./routes/projects");
 const PeopleRoutes = require("./routes/people");
 const AdminRoutes = require("./routes/admin");
 const CardRoutes = require("./routes/cards");
+const ItemsRoutes = require("./routes/items")
 
 mongoose.connect(process.env.MONGO_URI);
 
@@ -44,6 +45,7 @@ app.use("/eventos", EventRoutes);
 app.use("/proyectos", ProjectRoutes);
 app.use("/personas", PeopleRoutes);
 app.use("/login", AdminRoutes);
+app.use("/items", ItemsRoutes)
 
 //If no endpoint consumes the request, throw a 404 error
 app.use((req, res, next) => {
