@@ -37,7 +37,9 @@ const loansSchema = new mongoose.Schema(
             required: true,
         }
 
-    }
+    },
+    { collection: "loans" }
+
 
 
 )

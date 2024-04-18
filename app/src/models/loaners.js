@@ -23,7 +23,9 @@ const loanersSchema = new mongoose.Schema(
             match: /^[\\D\\d]+@(alumnos.)?upm.es$/,
             unique: true
         }
-    }
+    },
+    { collection: "loaners" }
+
 )
 
 module.exports = mongoose.model("Loaners", loanersSchema)

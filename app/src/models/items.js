@@ -27,7 +27,9 @@ const itemsSchema = new mongoose.Schema(
             type: Boolean,
             required: true,
         }
-    }
+    },
+    { collection: "items" }
+
 )
 
 module.exports = mongoose.model("Items", itemsSchema)
