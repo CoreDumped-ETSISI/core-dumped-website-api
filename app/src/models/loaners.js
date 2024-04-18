@@ -26,6 +26,6 @@ const loanersSchema = new mongoose.Schema(
     },
     { collection: "loaners" }
 
-)
+);
 
-module.exports = mongoose.model("Loaners", loanersSchema)
+module.exports = mongoose.model("Loaners", loanersSchema);
