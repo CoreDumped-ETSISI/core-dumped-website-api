@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const Card = require("../models/items");
+const Item = require("../models/items");
+const Loans = require("../models/loans")
 
 /**
  * Gets all items in an array
@@ -9,7 +10,7 @@ const Card = require("../models/items");
  *
  */
 exports.items_get_all = (req, res, next) => {
-    Card.find({})
+    Item.find({})
         .sort({ date: "descending" })
         .exec()
         .then((docs) => {
@@ -32,11 +33,14 @@ exports.items_get_all = (req, res, next) => {
  */
 exports.items_get_item = (req, res, next) => {
     const id = req.params.id;
-    Card.findById(id)
+    Item.findById(id)
         .exec()
         .then((doc) => {
             if (doc) {
-                res.status(200).json(doc);
+                res.status(200).json({
+                    item: doc,
+                    estado: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Loans' }]
+                });
             } else {
                 res
                     .status(404)
@@ -57,7 +61,7 @@ exports.items_get_item = (req, res, next) => {
  */
 exports.items_create_item = (req, res, next) => {
     const id = new mongoose.Types.ObjectId();
-    const card = new Card({
+    const item = new Item({
         _id: id,
         name: req.body.name,
         image: req.body.image,
@@ -65,7 +69,7 @@ exports.items_create_item = (req, res, next) => {
         working: req.body.working,
         url: req.get("host") + "/items/" + id,
     });
-    card
+    item
         .save()
         .then((result) => {
             res.status(201).json({
@@ -90,7 +94,7 @@ exports.items_create_item = (req, res, next) => {
  */
 exports.items_delete_item = (req, res, next) => {
     const id = req.params.id;
-    Items.findByIdAndDelete(id)
+    Item.findByIdAndDelete(id)
         .exec()
         .then((doc) => {
             if (doc) {
@@ -119,7 +123,7 @@ exports.items_delete_item = (req, res, next) => {
  */
 exports.items_update_item = (req, res, next) => {
     const id = req.params.id;
-    Card.findByIdAndUpdate(id, req.body, { new: true, runValidators: true })
+    Item.findByIdAndUpdate(id, req.body, { new: true, runValidators: true })
         .exec()
         .then((doc) => {
             if (doc) {
@@ -138,3 +142,13 @@ exports.items_update_item = (req, res, next) => {
             res.status(500).json({ error: err });
         });
 };
+
+
+/**
+ * Updates person with matching ID
+ * @method PUT
+ * @route /personas/:personId
+ * @access Authorization required
+ *
+ */
+

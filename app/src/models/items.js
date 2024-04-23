@@ -3,8 +3,10 @@
 // image uri *
 //    quantity int32 * 
 //    working bool *
+const opts = { toJSON: { virtuals: true } };
 
 
+const Loans = require('./loans');
 const mongoose = require("mongoose");
 
 const itemsSchema = new mongoose.Schema(
@@ -31,5 +33,18 @@ const itemsSchema = new mongoose.Schema(
     { collection: "items" }
 
 );
+
+
+
+itemsSchema.virtual('Available').get(function () {
+
+    loans = Loans.find({});
+    console.log(loans);
+    return loans;
+});
+
+
+
+
 
 module.exports = mongoose.model("Items", itemsSchema);
