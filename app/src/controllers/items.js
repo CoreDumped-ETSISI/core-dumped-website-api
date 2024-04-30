@@ -142,12 +142,3 @@ exports.items_update_item = (req, res, next) => {
         });
 };
 
-
-/**
- * Updates person with matching ID
- * @method PUT
- * @route /personas/:personId
- * @access Authorization required
- *
- */
-

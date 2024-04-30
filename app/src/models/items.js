@@ -31,7 +31,8 @@ const itemsSchema = new mongoose.Schema(
         }
     },
     {
-        collection: "items", toJSON: { virtuals: true },
+        collection: "items",
+        toJSON: { virtuals: true },
         toObject: { virtuals: true },
     }
 
@@ -42,10 +43,14 @@ const itemsSchema = new mongoose.Schema(
 itemsSchema.virtual('loans', {
     ref: 'Loans',
     localField: '_id',
-    foreignField: 'item'
+    foreignField: 'item',
+    justOne: true,
+    justOne: false, // Ahora estamos configurando para que devuelva múltiples préstamos
+    count: true, // Contar el número total de préstamos asociados a este artículo
+    options: { match: { returned: true } } // Filtrar solo préstamos con returned igual a true
 }
 );
-
+const Items = mongoose.model("Items", itemsSchema);
 
 
 module.exports = mongoose.model("Items", itemsSchema);
