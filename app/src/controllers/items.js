@@ -11,7 +11,7 @@ const Loans = require("../models/loans")
  */
 exports.items_get_all = (req, res, next) => {
     Item.find({})
-        .sort({ date: "descending" })
+        .sort({ name: "ascending" })
         .exec()
         .then((docs) => {
             res.status(200).json(docs);
@@ -33,13 +33,12 @@ exports.items_get_all = (req, res, next) => {
  */
 exports.items_get_item = (req, res, next) => {
     const id = req.params.id;
-    Item.findById(id)
+    Item.findById(id).populate('loans')
         .exec()
         .then((doc) => {
             if (doc) {
                 res.status(200).json({
                     item: doc,
-                    estado: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Loans' }]
                 });
             } else {
                 res

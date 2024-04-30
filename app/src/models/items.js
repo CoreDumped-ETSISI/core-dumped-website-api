@@ -30,20 +30,21 @@ const itemsSchema = new mongoose.Schema(
             required: true,
         }
     },
-    { collection: "items" }
+    {
+        collection: "items", toJSON: { virtuals: true },
+        toObject: { virtuals: true },
+    }
 
 );
 
 
 
-itemsSchema.virtual('Available').get(function () {
-
-    loans = Loans.find({});
-    console.log(loans);
-    return loans;
-});
-
-
+itemsSchema.virtual('loans', {
+    ref: 'Loans',
+    localField: '_id',
+    foreignField: 'item'
+}
+);
 
 
 
