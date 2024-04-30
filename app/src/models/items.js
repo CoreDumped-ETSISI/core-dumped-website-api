@@ -44,12 +44,16 @@ itemsSchema.virtual('loans', {
     ref: 'Loans',
     localField: '_id',
     foreignField: 'item',
-    justOne: true,
-    justOne: false, // Ahora estamos configurando para que devuelva múltiples préstamos
     count: true, // Contar el número total de préstamos asociados a este artículo
-    options: { match: { returned: true } } // Filtrar solo préstamos con returned igual a true
+    options: { match: { returned: false } } // Filtrar solo préstamos con returned igual a false
 }
 );
+
+itemsSchema.virtual('availableUnits').get(function () {
+    const totalLoans = this.loans; // Número total de préstamos con returned igual a false
+    return this.quantity - totalLoans; // Cantidad total disponible es igual a la cantidad inicial menos los préstamos
+});
+
 const Items = mongoose.model("Items", itemsSchema);
 
 

@@ -33,7 +33,7 @@ exports.items_get_all = (req, res, next) => {
  */
 exports.items_get_item = (req, res, next) => {
     const id = req.params.id;
-    Item.findById(id).populate('loans')
+    Item.findById(id).populate('loans').populate('availableUnits')
         .exec()
         .then((doc) => {
             if (doc) {
