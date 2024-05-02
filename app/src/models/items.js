@@ -40,17 +40,16 @@ const itemsSchema = new mongoose.Schema(
 
 
 
-
-itemsSchema.virtual('availableUnits', {
-
+itemsSchema.virtual('loans', {
     ref: 'Loans',
     localField: '_id',
     foreignField: 'item',
+    count: true, // Contar el número total de préstamos asociados a este artículo
+    options: { match: { returned: false } } // Filtrar solo préstamos con returned igual a false
 
-}).get(function () {
-    const totalLoans = this.loans || 0; // Número total de préstamos con returned igual a false
-    return this.quantity - totalLoans; // Cantidad total disponible es igual a la cantidad inicial menos los préstamos
-});
+}
+);
+
 
 const Items = mongoose.model("Items", itemsSchema);
 

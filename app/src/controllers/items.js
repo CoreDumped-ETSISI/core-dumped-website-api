@@ -12,7 +12,7 @@ const Loans = require("../models/loans")
 exports.items_get_all = (req, res, next) => {
     Item.find({})
         .sort({ name: "ascending" })
-        .populate('availableUnits')
+        .populate('loans')
         .exec()
         .then((docs) => {
             res.status(200).json(docs);
