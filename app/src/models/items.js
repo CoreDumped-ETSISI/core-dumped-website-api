@@ -40,15 +40,6 @@ const itemsSchema = new mongoose.Schema(
 
 
 
-itemsSchema.virtual('loans', {
-    ref: 'Loans',
-    localField: '_id',
-    foreignField: 'item',
-    count: true, // Contar el número total de préstamos asociados a este artículo
-    options: { match: { returned: false } } // Filtrar solo préstamos con returned igual a false
-
-}
-);
 
 itemsSchema.virtual('availableUnits', {
 
