@@ -34,7 +34,8 @@ exports.items_get_all = (req, res, next) => {
  */
 exports.items_get_item = (req, res, next) => {
     const id = req.params.id;
-    Item.findById(id).populate('loans').populate('availableUnits')
+    Item.findById(id)
+        .populate('loans')
         .exec()
         .then((doc) => {
             if (doc) {
@@ -124,6 +125,7 @@ exports.items_delete_item = (req, res, next) => {
 exports.items_update_item = (req, res, next) => {
     const id = req.params.id;
     Item.findByIdAndUpdate(id, req.body, { new: true, runValidators: true })
+
         .exec()
         .then((doc) => {
             if (doc) {
