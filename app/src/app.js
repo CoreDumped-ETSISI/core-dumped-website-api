@@ -12,6 +12,10 @@ const PeopleRoutes = require("./routes/people");
 const AdminRoutes = require("./routes/admin");
 const CardRoutes = require("./routes/cards");
 const ItemsRoutes = require("./routes/items")
+const LoansRoutes = require("./routes/loans")
+
+const LoanersRoutes = require("./routes/loaners")
+
 
 mongoose.connect(process.env.MONGO_URI);
 
@@ -46,6 +50,9 @@ app.use("/proyectos", ProjectRoutes);
 app.use("/personas", PeopleRoutes);
 app.use("/login", AdminRoutes);
 app.use("/items", ItemsRoutes)
+app.use("/loaners", LoanersRoutes)
+app.use("/loans", LoansRoutes)
+
 
 //If no endpoint consumes the request, throw a 404 error
 app.use((req, res, next) => {

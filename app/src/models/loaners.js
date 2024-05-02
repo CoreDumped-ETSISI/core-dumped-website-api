@@ -21,7 +21,7 @@ const loanersSchema = new mongoose.Schema(
         email: {
             type: String,
             required: true,
-            match: /^[\\D\\d]+@(alumnos.)?upm.es$/,
+            match: /^[\D\d]+@(alumnos.)?upm.es$/,
             unique: true
         }
     },
