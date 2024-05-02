@@ -12,7 +12,7 @@ const loansSchema = new mongoose.Schema(
         _id: mongoose.Schema.Types.ObjectId,
         item: [
             {
-                type: Schema.Types.ObjectId, ref: 'Items',
+                type: mongoose.Schema.Types.ObjectId, ref: 'Items',
                 required: true
             }
         ],
@@ -23,7 +23,7 @@ const loansSchema = new mongoose.Schema(
         },
         loaner: [
             {
-                type: Schema.Types.ObjectId, ref: 'Loaners',
+                type: mongoose.Schema.Types.ObjectId, ref: 'Loaners',
                 required: true
             }
         ],

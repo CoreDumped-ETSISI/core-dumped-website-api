@@ -45,7 +45,16 @@ The routes of this API are:
 - `/personas` GET returns an array of all stored people
 - `/personas/:id` GET returns a single person with the corresponding ID
 - `/personas/:id` PUT updates a single person with the corresponding ID
-- `/admin` POST returns a valid for 2h JWT if the password is correct. Apply the password to the header `Authorization: Bearer <JWT>` 
+- `/login` POST returns a valid for 2h JWT if the password is correct. Apply the password to the header `Authorization: Bearer <JWT>` 
+- `/items` GET returns an array of all items
+- `/items/[:id]` resturns the item with the corresponding ID
+- `/items` POST creates a new item
+- `/items/[:id]` PUT updates a single item with the corresponding ID
+- `/items/[:id]` PATCH updates a single item with the corresponding ID
+- `/items/[:id]` DELETE deletes the item with the matching ID
+
+
+## DOCUMENTAR 
 
 ## Usage
 
