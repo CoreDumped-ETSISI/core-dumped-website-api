@@ -4,3 +4,7 @@ npm-debug.log
 .nyc
 .env
 .DS_Store
+app/src/controllers/loaners.js
+app/src/controllers/loans.js
+app/src/routes/loaners.js
+app/src/routes/loans.js

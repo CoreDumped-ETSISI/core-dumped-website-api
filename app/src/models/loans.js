@@ -29,6 +29,7 @@ const loansSchema = new mongoose.Schema(
         ],
         quantity: {
             type: Number,
+            default: 1,
             required: true,
             min: 0
         },
