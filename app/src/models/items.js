@@ -5,7 +5,6 @@
 //    working bool *
 const opts = { toJSON: { virtuals: true } };
 
-
 const Loans = require('./loans');
 const mongoose = require("mongoose");
 
