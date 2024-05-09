@@ -39,8 +39,11 @@ const loansSchema = new mongoose.Schema(
         }
 
     },
-    { collection: "loans" }
+    {
+        collection: "loans"
+    }
 
 );
+
 
 module.exports = mongoose.model("Loans", loansSchema);
