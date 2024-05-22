@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Loaner = require("../models/loaners");
+const Loans = require("../models/loans");
 
 
 
@@ -15,12 +16,12 @@ const Loaner = require("../models/loaners");
 exports.loaners_get_from_id = (req, res, next) => {
     const id = req.params.id;
     Loaner.findById(id)
-        .populate('latest_loans_id')
+        .populate('loans_id')
         .exec()
         .then((doc) => {
             if (doc) {
                 res.status(200).json({
-                    loaner: doc,
+                    loans: doc['loans_id'],
                 });
             } else {
                 res
@@ -46,15 +47,14 @@ exports.loaners_get_from_id = (req, res, next) => {
  */
 // 	Return the corresponding loaner by matricula number, populate with the latest loans
 exports.loaners_get_from_mat = (req, res, next) => {
-    console.log(req);
     const mat = req.params.mat;
     Loaner.find({ 'matricula': mat })
-        .populate('latest_loans_mat')
+        .populate('loans_id')
         .exec()
         .then((doc) => {
             if (doc) {
                 res.status(200).json({
-                    loaner: doc,
+                    loans: doc[0].loans_id,
                 });
             } else {
                 res
@@ -66,6 +66,9 @@ exports.loaners_get_from_mat = (req, res, next) => {
             console.log(err);
             res.status(500).json({ error: err });
         });
+
+
+
 };
 
 

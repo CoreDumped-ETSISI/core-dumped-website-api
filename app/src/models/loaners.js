@@ -34,13 +34,7 @@ const loanersSchema = new mongoose.Schema(
 );
 
 
-loanersSchema.virtual('latest_loans_id', {
-    ref: 'Loans',
-    localField: '_id',
-    foreignField: 'loaner',
-});
-
-loanersSchema.virtual('latest_loans_mat', {
+loanersSchema.virtual('loans_id', {
     ref: 'Loans',
     localField: '_id',
     foreignField: 'loaner',
