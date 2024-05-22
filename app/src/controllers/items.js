@@ -117,7 +117,7 @@ exports.items_delete_item = (req, res, next) => {
 
 /**
  * Updates card with matching ID
- * @method PATCH
+ * @method PUT
  * @route /items/:id
  * @access Authorization required
  *
