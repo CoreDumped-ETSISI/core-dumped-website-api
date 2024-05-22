@@ -11,10 +11,10 @@ const ProjectRoutes = require("./routes/projects");
 const PeopleRoutes = require("./routes/people");
 const AdminRoutes = require("./routes/admin");
 const CardRoutes = require("./routes/cards");
-const ItemsRoutes = require("./routes/items")
-const LoansRoutes = require("./routes/loans")
 
-const LoanersRoutes = require("./routes/loaners")
+const ItemsRoutes = require("./routes/items");
+const LoansRoutes = require("./routes/loans");
+const LoanersRoutes = require("./routes/loaners");
 
 
 mongoose.connect(process.env.MONGO_URI);

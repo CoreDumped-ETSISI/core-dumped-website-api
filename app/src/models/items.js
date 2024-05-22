@@ -5,7 +5,6 @@
 //    working bool *
 const opts = { toJSON: { virtuals: true } };
 
-
 const Loans = require('./loans');
 const mongoose = require("mongoose");
 
@@ -49,6 +48,13 @@ itemsSchema.virtual('loans', {
 }).get(function (v) {
     return this.quantity - v;
 });
+
+itemsSchema.virtual('loans_id_item', {
+    ref: 'Loans',
+    localField: '_id',
+    foreignField: 'item',
+});
+
 
 
 const Items = mongoose.model("Items", itemsSchema);

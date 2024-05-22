@@ -25,8 +25,20 @@ const loanersSchema = new mongoose.Schema(
             unique: true
         }
     },
-    { collection: "loaners" }
+    {
+        collection: "loaners",
+        toJSON: { virtuals: true },
+        toObject: { virtuals: true },
+    }
 
 );
+
+
+loanersSchema.virtual('loans_id_loaner', {
+    ref: 'Loans',
+    localField: '_id',
+    foreignField: 'loaner',
+});
+
 
 module.exports = mongoose.model("Loaners", loanersSchema);
