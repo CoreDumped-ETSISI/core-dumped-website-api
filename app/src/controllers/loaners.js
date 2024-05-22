@@ -12,17 +12,16 @@ const Loans = require("../models/loans");
  *
  */
 
-// Return the corresponding loaner by id, populate with the latest loans
+// Return the corresponding loaner by id
 exports.loaners_get_from_id = (req, res, next) => {
     const id = req.params.id;
     Loaner.findById(id)
-        .populate('loans_id')
         .exec()
         .then((doc) => {
             if (doc) {
-                res.status(200).json({
-                    loans: doc['loans_id'],
-                });
+                res.status(200).json(
+                    doc
+                );
             } else {
                 res
                     .status(404)
@@ -45,17 +44,16 @@ exports.loaners_get_from_id = (req, res, next) => {
  * @access Public
  *
  */
-// 	Return the corresponding loaner by matricula number, populate with the latest loans
+// 	Return the corresponding loaner by matricula number
 exports.loaners_get_from_mat = (req, res, next) => {
     const mat = req.params.mat;
     Loaner.find({ 'matricula': mat })
-        .populate('loans_id')
         .exec()
         .then((doc) => {
             if (doc) {
-                res.status(200).json({
-                    loans: doc[0].loans_id,
-                });
+                res.status(200).json(
+                    doc
+                );
             } else {
                 res
                     .status(404)

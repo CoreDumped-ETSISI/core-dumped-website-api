@@ -46,12 +46,13 @@ exports.loans_get_from_id = (req, res, next) => {
 exports.loans_get_from_item = (req, res, next) => {
     const id = req.params.id;
     Item.findById(id)
+        .populate('loans_id_item')
         .exec()
         .then((doc) => {
             if (doc) {
-                res.status(200).json({
-                    Item: doc,
-                });
+                res.status(200).json(
+                    doc['loans_id_item']
+                );
             } else {
                 res
                     .status(404)
@@ -76,12 +77,13 @@ exports.loans_get_from_item = (req, res, next) => {
 exports.loans_get_from_loaner = (req, res, next) => {
     const id = req.params.id;
     Loaner.findById(id)
+        .populate('loans_id_loaner')
         .exec()
         .then((doc) => {
             if (doc) {
-                res.status(200).json({
-                    Loaner: doc,
-                });
+                res.status(200).json(
+                    doc['loans_id_loaner']
+                );
             } else {
                 res
                     .status(404)

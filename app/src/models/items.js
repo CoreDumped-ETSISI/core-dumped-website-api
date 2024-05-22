@@ -49,6 +49,13 @@ itemsSchema.virtual('loans', {
     return this.quantity - v;
 });
 
+itemsSchema.virtual('loans_id_item', {
+    ref: 'Loans',
+    localField: '_id',
+    foreignField: 'item',
+});
+
+
 
 const Items = mongoose.model("Items", itemsSchema);
 
