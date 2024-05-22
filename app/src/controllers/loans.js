@@ -50,7 +50,7 @@ exports.loans_get_from_item = (req, res, next) => {
         .then((doc) => {
             if (doc) {
                 res.status(200).json({
-                    loan: doc,
+                    Item: doc,
                 });
             } else {
                 res
@@ -80,7 +80,7 @@ exports.loans_get_from_loaner = (req, res, next) => {
         .then((doc) => {
             if (doc) {
                 res.status(200).json({
-                    loan: doc,
+                    Loaner: doc,
                 });
             } else {
                 res
