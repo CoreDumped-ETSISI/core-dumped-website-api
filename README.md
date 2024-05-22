@@ -33,28 +33,43 @@ npm install
 ## Routes
 All routes with PUT, POST or DELETE are protected with authentication, use the instructions in the `/admin` endpoint to authenticate.
 The routes of this API are:
+#### Cartas
 - `/cartas` GET returns an array of all projects and events sorted by date
 - `/cartas` POST creates a new project or event
 - `/cartas/[:id]` GET returns a single project or event with the corresponding ID
 - `/cartas/[:id]` DELETE deletes a single project or event with the corresponding ID
 - `/cartas/[:id]` PUT updates a single project or event with the corresponding ID
+#### Eventos
 - `/eventos/` GET returns an array of all events sorted by date
 - `/eventos/categorias` GET returns an array of all event categories
+#### Proyectos
 - `/proyectos/` GET returns an array of all projects sorted by date
 - `/proyectos/categorias` GET returns an array of all project categories
+#### Personas
 - `/personas` GET returns an array of all stored people
 - `/personas/:id` GET returns a single person with the corresponding ID
 - `/personas/:id` PUT updates a single person with the corresponding ID
-- `/login` POST returns a valid for 2h JWT if the password is correct. Apply the password to the header `Authorization: Bearer <JWT>` 
+#### Auth
+- `/login` POST returns a valid for 2h JWT if the password is correct. Apply the password to the header `Authorization: Bearer <JWT>`
+#### Items
 - `/items` GET returns an array of all items
-- `/items/[:id]` resturns the item with the corresponding ID
+- `/items/:id` resturns the item with the corresponding ID
 - `/items` POST creates a new item
-- `/items/[:id]` PUT updates a single item with the corresponding ID
-- `/items/[:id]` PATCH updates a single item with the corresponding ID
-- `/items/[:id]` DELETE deletes the item with the matching ID
-
-
-## DOCUMENTAR 
+- `/items/:id` PUT updates a single item with the corresponding ID
+- `/items/:id` DELETE deletes the item with the matching ID
+#### Loaners
+- `/loaners` POST creates a new loaner
+- `/loaners/byid/:id` GET gets loaner with matching ID (Auth protected)
+- `/loaners/bymat/:mat` GET gets loaner with matching matricula (Auth protected)
+- `/loaners/:id` DELETE deletes the loaner with matching ID
+- `/loaners/:id` PUT updates the loaner with matching ID
+#### Loans
+- `/loans/:id` GET gets loan with matching ID
+- `/loans/item/:id` GET loans associated with item of matching ID
+- `/loans/loaner/:id` GET loans associates with loaner of matching ID
+- `/loans` POST creates a new loan
+- `/loans/:id` DELETE deletes the loan with matching ID
+- `/loans/:id` PUT updates the loan with matching ID
 
 ## Usage
 
